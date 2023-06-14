@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <title><%= cityName %> Weather</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Weather Without Adds</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <a class="nav-item nav-link" href="/">Back to Search</span></a>
+          <a class="nav-item nav-link" href="/about">About us</a>
+          <a class="nav-item nav-link" href="/support">Support this project</a>
+        </div>
+      </div>
+    </nav>
+
+    <h1><%= cityName %></h1>
+    <h2><%= currentTemp %>°</h2>
+    <h3><%= weatherDescription %></h3>
+    <h6>Min Temperature Today: <%= minCurrentTemp %>°, Max Temperature Today: <%= maxCurrentTemp %>°</h6>
+
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        API: OpenWeatherApi
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href=<%= hrefForOW %> +>OpenWeatherApi</a></li>
+        <li><a class="dropdown-item" href=<%= hrefForDotGov %>>Weather.gov API</a></li>
+      </ul>
+    </div>
+
+    <hr>
+
+    <div class="container text-center">
+      <div class="row">
+        <% for (let i = 0; i < 4; i++){ %>
+        <div class="col col-3">
+          <div class="card" style="width: 17rem;">
+            <img src="<%= "https://openweathermap.org/img/wn/" + weatherForecast[i].weather[0].icon + "@2x.png"%>" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><%= (weatherForecast[i].dt_txt).substring(5,10) %></h5>
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <td>
+                      <p><%= weatherForecast[i].weather[0].main %></p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Temperature:</p>
+                    </td>
+                    <td>
+                      <%= Math.round(weatherForecast[i].main.temp) %>°
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Feels Like:</p>
+                    </td>
+                    <td>
+                      <%= Math.round(weatherForecast[i].main.feels_like) %>°
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Max temp:</p>
+                    </td>
+                    <td>
+                      <%= Math.round(weatherForecast[i].main.temp_max) %>°
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Min temp:</p>
+                    </td>
+                    <td>
+                      <%= Math.round(weatherForecast[i].main.temp_min) %>°
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Pressure:</p>
+                    </td>
+                    <td>
+                      <%= weatherForecast[i].main.pressure %>hPa
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Humidity:</p>
+                    </td>
+                    <td>
+                      <%= weatherForecast[i].main.humidity %>%
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+
+      <div class="row">
+        <% for (let i = 4; i < 5; i++){ %>
+        <div class="col col-3">
+          <div class="card" style="width: 17rem;">
+            <img src="<%= "https://openweathermap.org/img/wn/" + weatherForecast[i].weather[0].icon + "@2x.png"%>" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><%= (weatherForecast[i].dt_txt).substring(5,10) %></h5>
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <td>
+                      <p><%= weatherForecast[i].weather[0].main %></p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Temperature:</p>
+                    </td>
+                    <td>
+                      <%= Math.round(weatherForecast[i].main.temp) %>°
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Feels Like:</p>
+                    </td>
+                    <td>
+                      <%= Math.round(weatherForecast[i].main.feels_like) %>°
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Max temp:</p>
+                    </td>
+                    <td>
+                      <%= Math.round(weatherForecast[i].main.temp_max) %>°
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Min temp:</p>
+                    </td>
+                    <td>
+                      <%= Math.round(weatherForecast[i].main.temp_min) %>°
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Pressure:</p>
+                    </td>
+                    <td>
+                      <%= weatherForecast[i].main.pressure %>hPa
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Humidity:</p>
+                    </td>
+                    <td>
+                      <%= weatherForecast[i].main.humidity %>%
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+
+    </div>
+
+
+    <!-- <% weatherForecast.forEach(function(element){ %>
+    <div class="alert alert-secondary" role="alert">
+      <h4><%= element.dt_txt %></h2>
+
+
+        <table class="table">
+          <tbody>
+            <tr>
+              <td>
+                <h5><%= element.weather[0].main %></h5>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h5>Temperature:</h5>
+              </td>
+              <td>
+                <%= Math.round(element.main.temp) %>°
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h5>Feels like:</h5>
+              </td>
+              <td>
+                <%= Math.round(element.main.feels_like) %>°
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h5>Atmospheric pressure:</h5>
+              </td>
+              <td>
+                <%= element.main.pressure %>hPa
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h5>Humidity:</h5>
+              </td>
+              <td>
+                <%= element.main.humidity %>%
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+    </div>
+
+    <% }) %> -->
+
+    <!-- Paypal Donate button -->
+    <form action="https://www.paypal.com/donate" method="post" target="_top">
+      <input type="hidden" name="business" value="ZEDMVZC3862AN" />
+      <input type="hidden" name="no_recurring" value="0" />
+      <input type="hidden" name="item_name" value="Thank you for supporting Weather Website without Ads Project!" />
+      <input type="hidden" name="currency_code" value="USD" />
+      <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+      <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+    </form>
+    <hr>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  </body>
+
+
+</html>
