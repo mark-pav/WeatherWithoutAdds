@@ -88,6 +88,7 @@ app.get("/locations/:location", function(req, res) {
     if (/^\d/.test(req.params.location)) {
       currentWeatherData = await getCurrentWeatherByZip(req.params.location);
       forecastData = await getForecastByZip(req.params.location);
+      console.log(forecastData);
       for (let i=0; i<forecastData.list.length ; i++){
         if ((forecastData.list[i].dt_txt).substring(11,13) == "21"){
           for (let j=i; j<forecastData.list.length; j+=8){
@@ -99,8 +100,8 @@ app.get("/locations/:location", function(req, res) {
     } else if (/^[a-zA-Z]/.test(req.params.location)) {
       currentWeatherData = await getCurrentWeatherByCityName(req.params.location);
       forecastData = await getForecastByCityName(req.params.location);
-
-      for (let i=0; i< await forecastData.list.length ; i++){
+      console.log(forecastData);
+      for (let i=0; i<forecastData.list.length ; i++){
         if ((forecastData.list[i].dt_txt).substring(11,13) == "21"){
           for (let j=i; j<forecastData.list.length; j+=8){
             dailyForecastData.push(forecastData.list[j]);
