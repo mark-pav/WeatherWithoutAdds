@@ -5,6 +5,11 @@
     <meta charset="utf-8">
     <title><%= cityName %> Weather</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Rokkitt:wght@500&display=swap" rel="stylesheet">
+
   </head>
 
   <body>
@@ -22,13 +27,12 @@
       </div>
     </nav>
 
-
-
-
-    <h1><%= cityName %></h1>
-    <h2><%= currentTemp %>°</h2>
-    <h3><%= weatherDescription %></h3>
-    <h6><%= shortForecast %></h6>
+    <div class="today-weather">
+      <h1><%= cityName %></h1>
+      <h2><%= currentTemp %>°</h2>
+      <h3><%= weatherDescription %></h3>
+      <h6><%= shortForecast %></h6>
+    </div>
 
     <div class="dropdown">
       <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -42,29 +46,25 @@
 
     <hr>
 
-    <hr>
+    <h3 class="forecast-h3">Forecast:</h3>
 
 
     <div class="container text-center">
       <div class="row">
         <% for (let i = 0; i < 4; i++){ %>
-        <div class="col col-3">
-          <div class="card" style="width: 17rem;">
-            <img src=<%= weatherForecast[i].icon %> class="card-img-top" alt="...">
+        <div class="col col-3 forecast-container">
+          <div class="card" style="width: 19rem;">
+            <img class="icon" src=<%= weatherForecast[i].icon %> class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title"><%= weatherForecast[i].startTime %> <%= (weatherForecast[i].name).substring(0,3) %></h5>
+              <h5 class="card-title desc-for-container"><%= weatherForecast[i].startTime %> <%= (weatherForecast[i].name).substring(0,3) %></h5>
+              <p class="desc-for-container desc-for-container-padding"><%= weatherForecast[i].shortForecast %></p>
               <table class="table">
                 <tbody>
                   <tr>
-                    <td>
-                      <p><%= weatherForecast[i].shortForecast %></p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
+                    <td class="main-temp">
                       <p>Temperature:</p>
                     </td>
-                    <td>
+                    <td class="main-temp">
                       <%= weatherForecast[i].temperature %>°
                     </td>
                   </tr>
@@ -101,23 +101,19 @@
       </div>
       <div class="row">
         <% for (let i = 4; i < weatherForecast.length; i++){ %>
-        <div class="col col-3">
-          <div class="card" style="width: 17rem;">
-            <img src=<%= weatherForecast[i].icon %> class="card-img-top" alt="...">
+        <div class="col col-3 forecast-container">
+          <div class="card" style="width: 19rem;">
+            <img class="icon" src=<%= weatherForecast[i].icon %> class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title"><%= weatherForecast[i].startTime %> <%= (weatherForecast[i].name).substring(0,3) %></h5>
+              <h5 class="desc-for-container card-title"><%= weatherForecast[i].startTime %> <%= (weatherForecast[i].name).substring(0,3) %></h5>
+              <p class="desc-for-container desc-for-container-padding"><%= weatherForecast[i].shortForecast %></p>
               <table class="table">
                 <tbody>
                   <tr>
-                    <td>
-                      <p><%= weatherForecast[i].shortForecast %></p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
+                    <td class="main-temp">
                       <p>Temperature:</p>
                     </td>
-                    <td>
+                    <td class="main-temp">
                       <%= weatherForecast[i].temperature %>°
                     </td>
                   </tr>
@@ -155,77 +151,10 @@
 
     </div>
 
-
-
-
-    <!-- <% weatherForecast.forEach(function(element){ %> -->
-    <!-- <div class="card" style="width: 15rem;">
-      <img src= class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title"><%= element.startTime %></h5>
-        <table class="table">
-          <tbody>
-            <tr>
-              <td>
-                <p><%= element.shortForecast %></p>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p>Temperature:</p>
-              </td>
-              <td>
-                <%= element.temperature %>°
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p>Humidity:</p>
-              </td>
-              <td>
-                <%= element.relativeHumidity.value %>%
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div> -->
-    <!-- <div class="alert alert-secondary" role="alert">
-      <h4><%= element.startTime %></h2>
-        <table class="table">
-          <tbody>
-            <tr>
-              <td>
-                <h5><%= element.shortForecast %></h5>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <h5>Temperature:</h5>
-              </td>
-              <td>
-                <%= element.temperature %>°
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <h5>Humidity:</h5>
-              </td>
-              <td>
-                <%= element.relativeHumidity.value %>%
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-    </div> -->
-
-    <!-- <% }) %> -->
-
-
+    <hr>
 
     <!-- Paypal Donate button -->
-    <form action="https://www.paypal.com/donate" method="post" target="_top">
+    <form class="support-b" action="https://www.paypal.com/donate" method="post" target="_top">
       <input type="hidden" name="business" value="ZEDMVZC3862AN" />
       <input type="hidden" name="no_recurring" value="0" />
       <input type="hidden" name="item_name" value="Thank you for supporting Weather Website without Ads Project!" />

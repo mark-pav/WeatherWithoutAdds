@@ -1,0 +1,91 @@
+body {
+  background-color: #F7F1E5;
+  color: #4C4B16;
+  padding-left: 5%;
+  padding-right: 5%;
+  font-family: 'Rokkitt', serif;
+  font-size: 1.2rem;
+}
+
+h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 7rem;
+  padding-top: 2%;
+}
+
+.icon {
+  width: 50%;
+  align-self: center;
+  padding-top: 5%;
+}
+
+.today-weather {
+  text-align: center;
+}
+
+.forecast-container {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.desc-for-container {
+  font-family: 'Dancing Script', cursive;
+  color: #5C8984;
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+.td {
+  vertical-align: middle;
+}
+
+.main-temp {
+  font-weight: bold;
+}
+
+.navbar-brand {
+  padding-left: 5%;
+  font-size: 1.5rem;
+}
+
+.main-header {
+  text-align: center;
+  padding-top: 7%;
+  padding-bottom: 0.5%;
+}
+
+.about-us-p {
+  padding: 5em 5em 0;
+  line-height: 2em;
+}
+
+.support-p {
+  text-align: center;
+  padding-top: 8em;
+}
+
+.support-b {
+  text-align: center;
+  padding-top: 1em;
+  padding-bottom: 3em;
+}
+
+.desc-for-container-padding {
+  padding-top: 10px;
+}
+
+.forecast-h3 {
+  text-align: center;
+  text-decoration: underline;
+  padding-top: 1em;
+  color: #5C8984;
+}
+
+.navbar-nav {
+  padding-right: 5%;
+}
+
+#input-field {
+  padding-left: 15%;
+  padding-right: 15%;
+}
